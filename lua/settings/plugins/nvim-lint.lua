@@ -13,4 +13,5 @@ vim.api.nvim_exec([[
 		autocmd BufEnter		*.c,*.h lua require('norme').lint()
 		autocmd BufWritePost	*.c,*.h lua require('norme').lint()
 		autocmd TextChanged		*.c,*.h lua require('norme').lint()
+		autocmd InsertLeave		*.c,*.h lua require('norme').lint()
 ]], false)
