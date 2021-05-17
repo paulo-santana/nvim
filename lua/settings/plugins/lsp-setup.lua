@@ -140,3 +140,10 @@ nvimLSP.clangd.setup{
 nvimLSP.vimls.setup{
   on_attach = on_attach,
 }
+
+nvimLSP.tsserver.setup{
+  on_attach = on_attach,
+    cmd = { "typescript-language-server", "--stdio" },
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    root_dir = nvimLSP.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+}
