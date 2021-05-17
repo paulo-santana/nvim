@@ -1,6 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- make the plugin manage itself
   use { 'wbthomason/packer.nvim', opt = true }
 
@@ -23,9 +23,6 @@ return require('packer').startup(function()
 
   -- preview css colors
   use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
-
-  -- color matchin braces
-  use { 'p00f/nvim-ts-rainbow' }
 
   -- nvim-lspconfig recommended completion
   use { 'hrsh7th/nvim-compe' }
