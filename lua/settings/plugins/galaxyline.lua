@@ -38,16 +38,16 @@ gls.left[2] = {
   ViMode = {
     provider = function()
       local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',v= 'VISUAL',V= 'VISUAL LINE', [''] = 'VISUAL BLOCK', R = "REPLACE" }
-      return alias[vim.fn.mode()]
+      return ' ' .. alias[vim.fn.mode()]
     end,
     separator = '',
     separator_highlight = {colors.grey,function()
       if not buffer_not_empty() then
-        return colors.purple
+        return colors.lighter_bg
       end
       return colors.darker_bg
     end},
-    highlight = {colors.darker_bg,colors.grey,'bold'},
+    highlight = {colors.darker_bg, colors.grey,'bold'},
   },
 }
 gls.left[3] ={
