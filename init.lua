@@ -10,5 +10,6 @@ require('settings.plugins.telescope')          -- ~/.config/nvim/lua/settings/pl
 require('settings.plugins.galaxyline')         -- ~/.config/nvim/lua/settings/plugins/galaxyline.lua
 require('settings.plugins.bufferline')         -- ~/.config/nvim/lua/settings/plugins/bufferline.lua
 require('settings.plugins.nvim-norme')     -- ~/.config/nvim/lua/settings/plugins/nvim-norme.lua
+require('settings.plugins.header42')     -- ~/.config/nvim/lua/settings/plugins/header42.lua
 
 print('Welcome, Paulo!')

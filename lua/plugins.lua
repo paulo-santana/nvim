@@ -47,4 +47,6 @@ return require('packer').startup(function(use)
 
   use { 'tjdevries/nlua.nvim' }
 
+  use { 'eduardomosko/header42.nvim' }
+
 end)
