@@ -6,10 +6,6 @@ require'nvim-treesitter.configs'.setup {
 --      ["foo.bar"] = "Identifier",
 --    },
   },
-  -- rainbow brackets plugin
-  rainbow = {
-    enable = false
-  }
 }
 --{{{{{{}}}}}}
 vim.api.nvim_exec([[

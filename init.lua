@@ -9,6 +9,6 @@ require('settings.plugins.tree-sitter')        -- ~/.config/nvim/lua/settings/pl
 require('settings.plugins.telescope')          -- ~/.config/nvim/lua/settings/plugins/telescope.lua
 require('settings.plugins.galaxyline')         -- ~/.config/nvim/lua/settings/plugins/galaxyline.lua
 require('settings.plugins.bufferline')         -- ~/.config/nvim/lua/settings/plugins/bufferline.lua
-require('settings.plugins.nvim-lint')     -- ~/.config/nvim/lua/settings/plugins/nvim-lint.lua
+require('settings.plugins.nvim-norme')     -- ~/.config/nvim/lua/settings/plugins/nvim-norme.lua
 
 print('Welcome, Paulo!')
