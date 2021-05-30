@@ -1,25 +1,8 @@
-local bufferline = require('bufferline')
-						
 local gl = require('galaxyline')
 local gls = gl.section
 gl.short_line_list = {'LuaTree','vista','dbui'}
 
-local colors = {
-  bg = '#282c34',
-  yellow = '#e5c07b',
-  cyan = '#56b6c2',
-  green = '#98c379',
-  orange = '#d19a66',
-  purple = '#c678dd',
-  magenta = '#c678dd',
-  grey = '#abb2bf',
-  blue = '#61afef',
-  red = '#e06c75'
-}
-
-colors.darker_bg = bufferline.shade_color(colors.bg, -8)
-colors.lighter_bg = bufferline.shade_color(colors.bg, 24)
-colors.darkblue = bufferline.shade_color(colors.blue, -74)
+local colors = require('../../themes/onedark').colors
 
 local buffer_not_empty = function()
   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
@@ -38,7 +21,7 @@ gls.left[2] = {
   ViMode = {
     provider = function()
       local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',v= 'VISUAL',V= 'VISUAL LINE', [''] = 'VISUAL BLOCK', R = "REPLACE" }
-      return ' ' .. alias[vim.fn.mode()]
+      return alias[vim.fn.mode()]
     end,
     separator = '',
     separator_highlight = {colors.grey,function()

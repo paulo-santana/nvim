@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 
 vim.o.ruler = true
---vim.o.mouse = 'a'
+vim.o.mouse = 'a'
 vim.o.hidden = true
 vim.o.encoding = 'utf-8'
 vim.o.splitbelow = true
@@ -16,6 +16,7 @@ vim.o.sidescrolloff = 6
 vim.o.showmode = false
 vim.o.cmdheight = 2
 vim.o.updatetime = 300
+vim.o.inccommand = 'nosplit'
 
 vim.wo.number = true
 vim.wo.relativenumber = true
@@ -31,6 +32,7 @@ vim.api.nvim_exec([[
 	set noexpandtab
 	set smartindent
 ]], true);
+vim.cmd('highlight Search ctermfg=180 ctermbg=59 guifg=#e5c07b guibg=#5c6370')
 --vim.bo.fileencoding = 'utf-8'
 --vim.bo.tabstop = 4
 --vim.bo.shiftwidth = 4

@@ -6,6 +6,8 @@ vim.api.nvim_set_keymap('n', '<M-Right>', '<cmd>vert resize +10<cr>', {noremap =
 
 vim.api.nvim_set_keymap('n', '<c-l>', '<c-^>', {noremap = true})
 
+vim.api.nvim_set_keymap('n', '<leader>nh', '<CMD>nohlsearch<CR>', {noremap = true})
+
 vim.api.nvim_set_keymap('n', '<leader>cc', '<CMD>cc<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>cn', '<CMD>cnext<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>cp', '<CMD>cprevious<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>n', '<CMD>cnext<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>p', '<CMD>cprevious<CR>', {noremap = true})

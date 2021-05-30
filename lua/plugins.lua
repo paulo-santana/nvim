@@ -1,52 +1,62 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- make the plugin manage itself
-  use { 'wbthomason/packer.nvim', opt = true }
+	-- make the plugin manage itself
+	use { 'wbthomason/packer.nvim', opt = true }
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-  use { 'neovim/nvim-lspconfig' }
-  use { 'nvim-lua/completion-nvim' }
+	use { 'neovim/nvim-lspconfig' }
 
-  -- eclipse jdt client
-  use { 'mfussenegger/nvim-jdtls' }
+	use { 'glepnir/lspsaga.nvim' }
 
-  -- fuzzy finder
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  }
+	use { "ray-x/lsp_signature.nvim" }
 
-  -- colorscheme
-  use { 'joshdick/onedark.vim' }
+	-- eclipse jdt client
+	use { 'mfussenegger/nvim-jdtls' }
 
-  -- preview css colors
-  use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
+	-- fuzzy finder
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+	}
 
-  -- nvim-lspconfig recommended completion
-  use { 'hrsh7th/nvim-compe' }
+	-- colorscheme
+	use { 'joshdick/onedark.vim' }
 
-  -- c/cpp gdb debugger wrapper
-  use { 'sakhnik/nvim-gdb', run = ':!bash ./install.sh' }
+	-- nvim-lspconfig recommended completion
+	use { 'hrsh7th/nvim-compe' }
 
-  -- status line
-  use { 'glepnir/galaxyline.nvim',
-    branch = 'main',
-	-- try to load config here
-	--config = function() require'settings.plugins.galaxyline' end,
-    -- some optional icons
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
+	-- status line
+	use {
+		'glepnir/galaxyline.nvim',
+		branch = 'main',
+		-- try to load config here
+		--config = function() require'settings.plugins.galaxyline' end,
+		-- some optional icons
+		requires = {'kyazdani42/nvim-web-devicons', opt = true}
+	}
 
-  use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
+	use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
-  use { 'edluffy/hologram.nvim' }
+	use { 'vinicius507/norme.nvim', requires = { 'mfussenegger/nvim-lint' } }
 
-  use { 'vinicius507/norme.nvim', requires = { 'mfussenegger/nvim-lint' } }
+	use { 'tjdevries/nlua.nvim' }
 
-  use { 'tjdevries/nlua.nvim' }
+	use { 'eduardomosko/header42.nvim' }
 
-  use { 'eduardomosko/header42.nvim' }
+	--use {'Th3Whit3Wolf/onebuddy', requires = 'tjdevries/colorbuddy.vim'}
+	use { 'norcalli/nvim-colorizer.lua' } 
+
+	use { 'lunarWatcher/auto-pairs' }
+
+	use { 'folke/lsp-colors.nvim' }
+
+	use {
+		'lewis6991/gitsigns.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim'
+		}
+	}
 
 end)

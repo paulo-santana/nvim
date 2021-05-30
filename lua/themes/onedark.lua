@@ -1,3 +1,30 @@
+local bufferline = require('bufferline')
+						
+local M = {}
+
+local colors = {
+  bg = '#282c34',
+  yellow = '#e5c07b',
+  cyan = '#56b6c2',
+  green = '#98c379',
+  orange = '#d19a66',
+  purple = '#c678dd',
+  magenta = '#c678dd',
+  grey = '#abb2bf',
+  blue = '#61afef',
+  red = '#e06c75'
+}
+colors.darker_bg = bufferline.shade_color(colors.bg, -8)
+colors.lighter_bg = bufferline.shade_color(colors.bg, 24)
+colors.darkblue = bufferline.shade_color(colors.blue, -74)
+colors.diag_error = bufferline.shade_color(colors.red, -30)
+colors.diag_warning = bufferline.shade_color(colors.yellow, -30)
+
+local diag_colors = {
+	error = '{ "fg": { "gui": "' .. colors.diag_error ..'" } }',
+	warning = '{ "fg": { "gui": "' .. colors.diag_warning ..'" } }'
+}
+
 if vim.fn.has('nvim') then
   vim.api.nvim_exec([[
     "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -9,9 +36,27 @@ if vim.fn.has('nvim') then
     if (has("termguicolors"))
       set termguicolors
     endif
+
+	if (has("autocmd"))
+		augroup colorextend
+			autocmd!
+			" Make `Function`s bold in GUI mode
+			autocmd ColorScheme * call onedark#extend_highlight("Function", { "gui": "bold" })
+			" Override the `Search` background and foreground colors in GUI mode
+			autocmd ColorScheme * call onedark#extend_highlight("Search", { "bg": { "gui": "#5c6370" }, "fg": { "gui": "#e5c07b" } })
+			" Override the LSP Diagnostic virtual text messages
+			autocmd ColorScheme * call onedark#extend_highlight("LspDiagnosticsDefaultError", ]] .. diag_colors.error ..[[)
+			autocmd ColorScheme * call onedark#extend_highlight("LspDiagnosticsDefaultWarning", ]] .. diag_colors.warning ..[[)
+		augroup END
+	endif
+
+
   ]], false)
 end
 
 vim.g.onedark_terminal_italics = 1
 
 vim.cmd('colorscheme onedark')
+
+M.colors = colors
+return M
