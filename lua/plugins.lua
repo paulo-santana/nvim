@@ -59,4 +59,6 @@ return require('packer').startup(function(use)
 		}
 	}
 
+	use { "norcalli/snippets.nvim" }
+
 end)

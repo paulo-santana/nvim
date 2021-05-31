@@ -14,6 +14,7 @@ require('settings.plugins.header42')     -- ~/.config/nvim/lua/settings/plugins/
 require('settings.plugins.auto-pairs')
 require('settings.plugins.lsp-saga')
 require('settings.plugins.lsp-colors')
+require('settings.plugins.gitsigns-setup')
 
 -- colorizer setup;
 -- needs to be called after other plugins are set

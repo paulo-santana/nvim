@@ -1,7 +1,10 @@
 local saga = require 'lspsaga'
 
 saga.init_lsp_saga({
-	server_filetype_map = { clangd = { 'c', 'cpp' } }
+	server_filetype_map = {
+		clangd = { 'c', 'cpp' },
+		sumneko_lua = { 'lua' }
+	}
 })
 
 vim.api.nvim_exec([[

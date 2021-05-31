@@ -61,6 +61,8 @@ gls.left[6] = {
   GitBranch = {
     provider = 'GitBranch',
     condition = buffer_not_empty,
+    separator = ' ',
+    separator_highlight = {colors.lighter_bg, colors.lighter_bg},
     highlight = {colors.magenta, colors.lighter_bg, 'bold'},
   }
 }
@@ -77,7 +79,7 @@ gls.left[7] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = checkwidth,
-    icon = ' ',
+    icon = '  ',
     highlight = {colors.green,colors.lighter_bg},
   }
 }
@@ -85,7 +87,7 @@ gls.left[8] = {
   DiffModified = {
     provider = 'DiffModified',
     condition = checkwidth,
-    icon = ' ',
+    icon = '  ',
     highlight = {colors.orange,colors.lighter_bg},
   }
 }
@@ -93,10 +95,11 @@ gls.left[9] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = checkwidth,
-    icon = ' ',
+    icon = '  ',
     highlight = {colors.red,colors.lighter_bg},
   }
 }
+
 gls.left[10] = {
   LeftEnd = {
     provider = function() return '' end,

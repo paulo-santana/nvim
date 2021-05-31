@@ -98,7 +98,7 @@ local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-s
 
 -- To get builtin LSP running, do something like:
 -- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
-require('nlua.lsp.nvim').setup(require('lspconfig'), {
+require('nlua.lsp.nvim').setup(nvimLSP, {
   on_attach = on_attach,
 
   cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
@@ -112,6 +112,7 @@ require('nlua.lsp.nvim').setup(require('lspconfig'), {
 		  workspace = {
 			  -- Make the server aware of Neovim runtime files
 			  library = {
+				  [vim.fn.expand('/usr/share/awesome/lib')] = true,
 				  [vim.fn.expand('$VIMRUNTIME/lua')] = true,
 				  [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
 			  },
