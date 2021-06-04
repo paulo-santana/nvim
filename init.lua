@@ -15,6 +15,7 @@ require('settings.plugins.auto-pairs')
 require('settings.plugins.lsp-saga')
 require('settings.plugins.lsp-colors')
 require('settings.plugins.gitsigns-setup')
+require('settings.plugins.nvim-dap-setup')
 
 -- colorizer setup;
 -- needs to be called after other plugins are set

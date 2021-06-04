@@ -165,8 +165,8 @@ gls.short_line_left[1] = {
   BufferType = {
     provider = 'FileTypeName',
     separator = '',
-    separator_highlight = {colors.purple,colors.bg},
-    highlight = {colors.grey,colors.purple}
+    separator_highlight = {colors.darker_bg,colors.bg},
+    highlight = {colors.orange,colors.darker_bg}
   }
 }
 
@@ -175,7 +175,7 @@ gls.short_line_right[1] = {
   BufferIcon = {
     provider= 'BufferIcon',
     separator = '',
-    separator_highlight = {colors.purple,colors.bg},
-    highlight = {colors.grey,colors.purple}
+    separator_highlight = {colors.darker_bg,colors.bg},
+    highlight = {colors.orange,colors.darker_bg}
   }
 }
