@@ -1,38 +1,56 @@
+local setopt = vim.opt
+
 vim.g.mapleader = " "
 
-vim.o.ruler = true
-vim.o.mouse = 'a'
-vim.o.hidden = true
-vim.o.encoding = 'utf-8'
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.t_Co = '256'
-vim.o.background = 'dark'
-vim.o.smarttab = true
-vim.o.laststatus = 2
-vim.o.showtabline = 2
-vim.o.scrolloff = 4
-vim.o.sidescrolloff = 6
-vim.o.showmode = false
-vim.o.cmdheight = 2
-vim.o.updatetime = 300
-vim.o.inccommand = 'nosplit'
+local options = {
+	ruler = true,
+	mouse = 'a',
+	hidden = true,
+	encoding = 'utf-8',
+	splitbelow = true,
+	splitright = true,
+	--t_Co = '256',
+	background = 'dark',
+	smarttab = true,
+	laststatus = 2,
+	showtabline = 2,
+	scrolloff = 4,
+	sidescrolloff = 6,
+	showmode = false,
+	cmdheight = 2,
+	updatetime = 300,
+	inccommand = 'nosplit',
 
-vim.wo.number = true
-vim.wo.relativenumber = true
-vim.wo.signcolumn = 'yes'
-vim.wo.cursorline = true
-vim.wo.colorcolumn = '80,120'
-vim.wo.wrap = false
+	number = true,
+	relativenumber = true,
+	signcolumn = 'yes',
+	cursorline = true,
+	colorcolumn = '80,120',
+	wrap = false,
 
-vim.api.nvim_exec([[
-	set fileencoding=utf-8
-	set tabstop=4
-	set shiftwidth=4
-	set noexpandtab
-	set smartindent
-]], true);
-vim.cmd('highlight Search ctermfg=180 ctermbg=59 guifg=#e5c07b guibg=#5c6370')
+	fileencoding = 'utf-8',
+	tabstop = 4,
+	shiftwidth = 4,
+	expandtab = false,
+	smartindent = true,
+}
+
+local set_options = function(opt)
+	for option, value in pairs(opt) do
+		setopt[option] = value
+	end
+end
+
+set_options(options)
+
+--vim.api.nvim_exec([[
+--fileencoding=utf-8
+--tabstop=4
+--shiftwidth=4
+--noexpandtab
+--smartindent
+--]], true);
+--vim.cmd('highlight Search ctermfg=180 ctermbg=59 guifg=#e5c07b guibg=#5c6370')
 --vim.bo.fileencoding = 'utf-8'
 --vim.bo.tabstop = 4
 --vim.bo.shiftwidth = 4
