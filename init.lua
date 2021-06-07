@@ -1,7 +1,8 @@
 require('plugins')                             -- ~/.config/nvim/lua/plugins.lua
 require('settings.general')                    -- ~/.config/nvim/lua/settings/general.lua
 require('settings.mappings')                   -- ~/.config/nvim/lua/settings/mappings.lua
-require('themes.onedark')                      -- ~/.config/nvim/lua/themes/onedark.lua
+--require('themes.onedark')                      -- ~/.config/nvim/lua/themes/onedark.lua
+require('themes.tokyonight')
 require('settings.plugins.lsp-setup')          -- ~/.config/nvim/lua/settings/plugins/lsp-setup.lua
 --require('settings.plugins.completion-nvim')  -- ~/.config/nvim/lua/settings/plugins/completion-nvim.lua
 require('settings.plugins.nvim-compe')         -- ~/.config/nvim/lua/settings/plugins/nvim-compe.lua
@@ -16,6 +17,7 @@ require('settings.plugins.lsp-saga')
 require('settings.plugins.lsp-colors')
 require('settings.plugins.gitsigns-setup')
 require('settings.plugins.nvim-dap-setup')
+require('settings.plugins.neogit-setup')
 
 -- colorizer setup;
 -- needs to be called after other plugins are set

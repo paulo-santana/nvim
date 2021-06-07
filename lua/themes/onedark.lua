@@ -1,4 +1,4 @@
-local bufferline = require('bufferline')
+local shade_color = require('../utils').shade_color
 						
 local M = {}
 
@@ -14,11 +14,11 @@ local colors = {
   blue = '#61afef',
   red = '#e06c75'
 }
-colors.darker_bg = bufferline.shade_color(colors.bg, -8)
-colors.lighter_bg = bufferline.shade_color(colors.bg, 24)
-colors.darkblue = bufferline.shade_color(colors.blue, -74)
-colors.diag_error = bufferline.shade_color(colors.red, -30)
-colors.diag_warning = bufferline.shade_color(colors.yellow, -30)
+colors.darker_bg = shade_color(colors.bg, -8)
+colors.lighter_bg = shade_color(colors.bg, 24)
+colors.darkblue = shade_color(colors.blue, -74)
+colors.diag_error = shade_color(colors.red, -30)
+colors.diag_warning = shade_color(colors.yellow, -30)
 
 local diag_colors = {
 	error = '{ "fg": { "gui": "' .. colors.diag_error ..'" } }',

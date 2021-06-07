@@ -23,6 +23,7 @@ return require('packer').startup(function(use)
 
 	-- colorscheme
 	use { 'joshdick/onedark.vim' }
+	use { 'folke/tokyonight.nvim' }
 
 	-- nvim-lspconfig recommended completion
 	use { 'hrsh7th/nvim-compe' }
@@ -64,5 +65,9 @@ return require('packer').startup(function(use)
 	use { 'mfussenegger/nvim-dap' }
 
 	use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+
+	use { 'TimUntersberger/neogit', requires = { 'nvim-lua/plenary.nvim' } }
+
+	use { 'sindrets/diffview.nvim' }
 
 end)

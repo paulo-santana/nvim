@@ -2,7 +2,7 @@ local gl = require('galaxyline')
 local gls = gl.section
 gl.short_line_list = {'LuaTree','vista','dbui'}
 
-local colors = require('../../themes/onedark').colors
+local colors = require('../../themes/utils').colors
 
 local buffer_not_empty = function()
   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
