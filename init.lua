@@ -18,6 +18,7 @@ require('settings.plugins.lsp-colors')
 require('settings.plugins.gitsigns-setup')
 require('settings.plugins.nvim-dap-setup')
 require('settings.plugins.neogit-setup')
+require('settings.plugins.nvim-tree-setup')
 
 -- colorizer setup;
 -- needs to be called after other plugins are set
