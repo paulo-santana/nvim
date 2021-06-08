@@ -37,14 +37,14 @@ return require('packer').startup(function(use)
 	use { 'hrsh7th/nvim-compe' }
 
 	-- status line
-	use {
-		'glepnir/galaxyline.nvim',
-		branch = 'main',
-		-- try to load config here
-		--config = function() require'settings.plugins.galaxyline' end,
-		-- some optional icons
-		requires = {'kyazdani42/nvim-web-devicons', opt = true}
-	}
+--	use {
+--		'glepnir/galaxyline.nvim',
+--		branch = 'main',
+--		-- try to load config here
+--		--config = function() require'settings.plugins.galaxyline' end,
+--		-- some optional icons
+--		requires = {'kyazdani42/nvim-web-devicons', opt = true}
+--	}
 
 	use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
@@ -92,6 +92,10 @@ return require('packer').startup(function(use)
 
 	use { 'kyazdani42/nvim-tree.lua' , 
 		requires = { 'kyazdani42/nvim-web-devicons' }
+	}
+
+	use { 'hoob3rt/lualine.nvim',
+		requires = {'kyazdani42/nvim-web-devicons', opt = true}
 	}
 
 end)
