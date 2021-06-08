@@ -8,7 +8,8 @@ require('settings.plugins.lsp-setup')          -- ~/.config/nvim/lua/settings/pl
 require('settings.plugins.nvim-compe')         -- ~/.config/nvim/lua/settings/plugins/nvim-compe.lua
 require('settings.plugins.tree-sitter')        -- ~/.config/nvim/lua/settings/plugins/tree-sitter.lua
 require('settings.plugins.telescope')          -- ~/.config/nvim/lua/settings/plugins/telescope.lua
-require('settings.plugins.galaxyline')         -- ~/.config/nvim/lua/settings/plugins/galaxyline.lua
+require('settings.plugins.lualine')
+--require('settings.plugins.galaxyline')         -- ~/.config/nvim/lua/settings/plugins/galaxyline.lua
 require('settings.plugins.bufferline')         -- ~/.config/nvim/lua/settings/plugins/bufferline.lua
 require('settings.plugins.nvim-norme')     -- ~/.config/nvim/lua/settings/plugins/nvim-norme.lua
 require('settings.plugins.header42')     -- ~/.config/nvim/lua/settings/plugins/header42.lua
