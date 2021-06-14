@@ -41,3 +41,6 @@ neogit.setup{
 		diffview = true
 	}
 };
+
+-- mappings
+vim.api.nvim_set_keymap('n', '<leader>g', '<CMD>Neogit<CR>', {noremap = true})

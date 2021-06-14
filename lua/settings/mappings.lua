@@ -13,6 +13,3 @@ vim.api.nvim_set_keymap('n', '<leader>nh', '<CMD>nohlsearch<CR>', {noremap = tru
 vim.api.nvim_set_keymap('n', '<leader>cc', '<CMD>cc<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>n', '<CMD>cnext<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>p', '<CMD>cprevious<CR>', {noremap = true})
-
--- neogit
-vim.api.nvim_set_keymap('n', '<leader>g', '<CMD>Neogit<CR>', {noremap = true})
