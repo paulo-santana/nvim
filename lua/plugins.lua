@@ -4,8 +4,8 @@ local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-    execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-    execute "packadd packer.nvim"
+    execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+    execute 'packadd packer.nvim'
 end
 
 return require('packer').startup(function(use)
@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
 
 	use { 'glepnir/lspsaga.nvim' }
 
-	use { "ray-x/lsp_signature.nvim" }
+	use { 'ray-x/lsp_signature.nvim' }
 
 	-- eclipse jdt client
 	use { 'mfussenegger/nvim-jdtls' }
@@ -68,21 +68,21 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	use { "norcalli/snippets.nvim" }
+	use { 'norcalli/snippets.nvim' }
 
 	use { 'mfussenegger/nvim-dap' }
 
-	use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+	use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
 
 	use { 'TimUntersberger/neogit', requires = { 'nvim-lua/plenary.nvim' } }
 
 	use { 'sindrets/diffview.nvim' }
 
 	use {
-		"folke/trouble.nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
+		'folke/trouble.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons' },
 		config = function()
-			require("trouble").setup {
+			require('trouble').setup {
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
 				-- refer to the configuration section below
@@ -97,5 +97,9 @@ return require('packer').startup(function(use)
 	use { 'hoob3rt/lualine.nvim',
 		requires = {'kyazdani42/nvim-web-devicons', opt = true}
 	}
+
+	use { 'oknozor/illumination', run = './install.sh' }
+
+	use { 'andweeb/presence.nvim' }
 
 end)
