@@ -5,4 +5,5 @@ vim.api.nvim_exec([[
 	let g:AutoPairsShortcutJump = ""
 	let g:AutoPairsShortcutBackInsert = ""
 	let g:AutoPairsShortcutMultilineClose = ""
+	let g:AutoPairsShortcutToggleMultilineClose = ""
 ]], false)
