@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- vim.api.nvim_set_keymap('n', 'gf', ':e <cfile><CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<M-Up>', '<cmd>resize -5<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<M-Down>', '<cmd>resize +5<cr>', {noremap = true})

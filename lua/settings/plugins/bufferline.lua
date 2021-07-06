@@ -45,8 +45,7 @@ require('bufferline').setup {
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
     separator_style = "slant", -- "slant" | "thick" | "thin" | { 'any', 'any' },
-    enforce_regular_tabs = true,
-    always_show_bufferline = true,
+    enforce_regular_tabs = true, always_show_bufferline = true,
     sort_by =  'extension', -- 'extension' | 'relative_directory' | 'directory' | function(buffer_a, buffer_b)
       -- add custom logic
       --return buffer_a.modified > buffer_b.modified

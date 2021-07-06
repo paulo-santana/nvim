@@ -1,7 +1,5 @@
 local setopt = vim.opt
 
-vim.g.mapleader = " "
-
 local options = {
 	ruler = true,
 	mouse = 'a',
@@ -20,6 +18,7 @@ local options = {
 	cmdheight = 2,
 	updatetime = 300,
 	inccommand = 'nosplit',
+	termguicolors = true,
 
 	number = true,
 	relativenumber = true,

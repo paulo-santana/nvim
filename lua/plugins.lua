@@ -20,31 +20,34 @@ return require('packer').startup(function(use)
 
 	use { 'ray-x/lsp_signature.nvim' }
 
-	-- eclipse jdt client
-	use { 'mfussenegger/nvim-jdtls' }
-
+--	-- eclipse jdt client
+--	use { 'mfussenegger/nvim-jdtls' }
+--
 	-- fuzzy finder
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 	}
 
-	-- colorscheme
-	use { 'joshdick/onedark.vim' }
-	use { 'folke/tokyonight.nvim' }
+--	-- colorscheme
+--	-- use { 'joshdick/onedark.vim' }
+	--use { 'monsonjeremy/onedark.nvim' }
+	use { 'paulo-santana/onedarker.nvim' }
+--	-- use { 'folke/tokyonight.nvim' }
+	-- use { 'siduck76/nvim-base16.lua' }
 
 	-- nvim-lspconfig recommended completion
 	use { 'hrsh7th/nvim-compe' }
 
-	-- status line
---	use {
---		'glepnir/galaxyline.nvim',
---		branch = 'main',
---		-- try to load config here
---		--config = function() require'settings.plugins.galaxyline' end,
---		-- some optional icons
---		requires = {'kyazdani42/nvim-web-devicons', opt = true}
---	}
+--	-- status line
+----	use {
+----		'glepnir/galaxyline.nvim',
+----		branch = 'main',
+----		-- try to load config here
+----		--config = function() require'settings.plugins.galaxyline' end,
+----		-- some optional icons
+----		requires = {'kyazdani42/nvim-web-devicons', opt = true}
+----	}
 
 	use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
@@ -53,10 +56,10 @@ return require('packer').startup(function(use)
 	use { 'tjdevries/nlua.nvim' }
 
 	use { 'eduardomosko/header42.nvim' }
-
+--
 	--use {'Th3Whit3Wolf/onebuddy', requires = 'tjdevries/colorbuddy.vim'}
 	use { 'norcalli/nvim-colorizer.lua' } 
-
+--
 	use { 'lunarWatcher/auto-pairs' }
 
 	use { 'folke/lsp-colors.nvim' }
@@ -68,7 +71,7 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	use { 'norcalli/snippets.nvim' }
+--	use { 'norcalli/snippets.nvim' }
 
 	use { 'mfussenegger/nvim-dap' }
 
@@ -78,17 +81,17 @@ return require('packer').startup(function(use)
 
 	use { 'sindrets/diffview.nvim' }
 
-	use {
-		'folke/trouble.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons' },
-		config = function()
-			require('trouble').setup {
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			}
-		end
-	}
+--	use {
+--		'folke/trouble.nvim',
+--		requires = { 'kyazdani42/nvim-web-devicons' },
+--		config = function()
+--			require('trouble').setup {
+--				-- your configuration comes here
+--				-- or leave it empty to use the default settings
+--				-- refer to the configuration section below
+--			}
+--		end
+--	}
 
 	use { 'kyazdani42/nvim-tree.lua' , 
 		requires = { 'kyazdani42/nvim-web-devicons' }
@@ -97,9 +100,11 @@ return require('packer').startup(function(use)
 	use { 'hoob3rt/lualine.nvim',
 		requires = {'kyazdani42/nvim-web-devicons', opt = true}
 	}
-
-	use { 'oknozor/illumination', run = './install.sh' }
+--
+--	use { 'oknozor/illumination', run = './install.sh' }
 
 	use { 'andweeb/presence.nvim' }
+
+	use {"akinsho/nvim-toggleterm.lua"}
 
 end)

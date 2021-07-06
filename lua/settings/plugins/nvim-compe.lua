@@ -1,4 +1,3 @@
-vim.o.completeopt = "menuone,noselect"
 vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.completeopt = vim.o.completeopt .. ',menuone,noselect'
 
