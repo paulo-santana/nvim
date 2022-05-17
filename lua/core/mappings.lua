@@ -53,16 +53,70 @@ end
 
 M.lspconfig = function()
     map("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>")
-    map("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>")
     map("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>")
-    map("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>")
+    map("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>")
+    -- map("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>")
     map("n", "gk", "<CMD>lua vim.lsp.buf.signature_help()<CR>")
     map("n", "<leader>D", "<CMD>lua vim.lsp.buf.type_definition()<CR>")
     map("n", "<leader>rn", "<CMD>lua vim.lsp.buf.rename()<CR>")
     map("n", "<leader>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>")
-    map("n", "<leader>gr", "<CMD>lua vim.lsp.buf.references()<CR>")
+    -- defined in trouble.nvim mappings
+    -- map("n", "<leader>gr", "<CMD>lua vim.lsp.buf.references()<CR>")
     map("n", "]d", "<CMD>lua vim.diagnostic.goto_next()<CR>")
     map("n", "[d", "<CMD>lua vim.diagnostic.goto_prev()<CR>")
+end
+
+M.projects = function()
+    map("n", "<C-P>", "<CMD>Telescope projects<CR>")
+end
+
+M.trouble = function ()
+    map("n", "<leader>xx", "<CMD>TroubleToggle<CR>")
+    map("n", "<leader>xw", "<CMD>TroubleToggle workspace_diagnostics<CR>")
+    map("n", "<leader>xd", "<CMD>TroubleToggle document_diagnostics<CR>")
+    map("n", "<leader>xq", "<CMD>TroubleToggle quickfix<CR>")
+    -- map("n", "gd", "<CMD>TroubleToggle lsp_definitions<CR>")
+    map("n", "gr", "<CMD>TroubleToggle lsp_references<CR>")
+    map("n", "gi", "<CMD>TroubleToggle lsp_implementations<CR>")
+end
+
+Make = nil
+function MakeRun()
+    if not Make then
+        local ttok, toggleTerm = pcall(require, "toggleterm.terminal")
+        if ttok then
+            Make = toggleTerm.Terminal:new({
+                cmd = "make run",
+                hidden = true,
+                direction = "float",
+                close_on_exit = false,
+                shade_terminals = true,
+                float_opts = {
+                    border = "single",
+                    highlights = {
+                        border = "NormalFloat",
+                        background = "NormalFloat",
+                    }
+                },
+                on_open = function(term)
+                    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<CMD>close<CR>", {
+                        noremap = true,
+                        silent = true
+                    })
+                end,
+            })
+        else
+            error("Error loading toggleterm\n\n" .. toggleTerm)
+            return false
+        end
+    end
+    Make:toggle()
+end
+
+local function _custom_mappings()
+    -- map("n", "<F5>", "<CMD>vsplit term://make run<CR>i")
+    map("n", "<F5>", "<CMD>lua MakeRun()<CR>")
+    map("n", "<leader>nh", "<CMD>noh<CR>")
 end
 
 M.misc = function()
@@ -73,6 +127,8 @@ M.misc = function()
     cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
     cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
     cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
+
+    _custom_mappings()
 end
 
 return M

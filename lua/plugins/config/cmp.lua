@@ -21,7 +21,6 @@ cmp.setup {
             vim_item.menu = ({
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[Lua]",
-                buffer = "[BUF]",
             })[entry.source.name]
 
             return vim_item
@@ -40,7 +39,11 @@ cmp.setup {
         },
         ["<Tab>"] = function(fallback)
             if cmp.visible() then
-                cmp.select_next_item()
+                local entry = cmp.get_selected_entry()
+                if not entry then
+                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                end
+                cmp.confirm()
             elseif require("luasnip").expand_or_jumpable() then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
             else
@@ -60,7 +63,6 @@ cmp.setup {
     sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "buffer" },
         { name = "nvim_lua" },
         { name = "path" },
     },

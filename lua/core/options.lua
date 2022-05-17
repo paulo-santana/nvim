@@ -3,9 +3,11 @@ local g = vim.g
 
 g.mapleader = " "
 
+-- opt.shell = '/bin/bash'
 opt.title = true
 opt.clipboard = "unnamedplus"
 opt.cul = true
+opt.colorcolumn = '80'
 
 opt.expandtab = true
 opt.shiftwidth = 4
@@ -16,6 +18,7 @@ opt.hidden = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.mouse = "a"
+opt.wrap = false
 
 opt.number = true
 opt.relativenumber = true
@@ -29,6 +32,8 @@ opt.termguicolors = true
 opt.timeoutlen = 400
 opt.updatetime = 250
 opt.undofile = true
+
+opt.guifont = 'JetBrainsMonoMedium Nerd Font:h10'
 
 local disabled_built_ins = {
     "2html_plugin",

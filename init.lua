@@ -1,5 +1,6 @@
 local core_modules = {
     "core.options",
+    "core.autocmds",
 }
 
 for _, module in ipairs(core_modules) do

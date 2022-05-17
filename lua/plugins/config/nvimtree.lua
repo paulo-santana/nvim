@@ -8,7 +8,7 @@ local g = vim.g
 
 g.nvim_tree_git_hl = 1
 g.nvim_tree_group_empty = 1
-g.nvim_tree_indent_markers = 1
+-- g.nvim_tree_indent_markers = 1
 
 g.nvim_tree_show_icons = {
     git = 0,
@@ -21,5 +21,10 @@ nvimtree.setup {
     },
     update_focused_file = {
         enable = true,
-    }
+    },
+    renderer = {
+        indent_markers = {
+            enable = true,
+        },
+    },
 }

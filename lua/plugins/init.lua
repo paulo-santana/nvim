@@ -58,12 +58,13 @@ return packer.startup(function()
         "famiu/feline.nvim",
         after = "nvim-web-devicons",
         config = function()
-            require('feline').setup()
+            require('plugins.config.statusline')
         end,
     }
 
     use {
         "akinsho/bufferline.nvim",
+        branch = "main",
         after = "nvim-web-devicons",
         config = function()
             require("plugins.config.bufferline")
@@ -155,25 +156,40 @@ return packer.startup(function()
         end
     }
 
+    -- use {
+    --     "tjdevries/nlua.nvim",
+    --     after = "nvim-lspconfig",
+    --     config = function()
+    --         local config = require('plugins.config.lspconfig')
+    --         local ok, lspconfig = pcall(require, 'lspconfig')
+    --         if not ok then
+    --             error('error loading lspconfig\n' .. lspconfig)
+    --             return
+    --         end
+    --         require('nlua.lsp.nvim').setup(lspconfig, {
+    --             -- cmd = { "/home/paulo/.language-servers/lua-language-server/bin/Linux/lua-language-server" },
+    --             on_attach = config.on_attach,
+    --             capabilities = config.capabilities,
+    --             globals = {
+    --                 "Color", "c", "Group", "g", "s",
+    --             },
+    --         })
+    --     end,
+    -- }
+    --
+    --
+    --
     use {
-        "tjdevries/nlua.nvim",
+        'folke/trouble.nvim',
         after = "nvim-lspconfig",
-        config = function()
-            local config = require('plugins.config.lspconfig')
-            local ok, lspconfig = pcall(require, 'lspconfig')
-            if not ok then
-                error('error loading lspconfig\n' .. lspconfig)
-                return
-            end
-            require('nlua.lsp.nvim').setup(lspconfig, {
-                -- cmd = { "/home/paulo/.language-servers/lua-language-server/bin/Linux/lua-language-server" },
-                on_attach = config.on_attach,
-                capabilities = config.capabilities,
-                globals = {
-                    "Color", "c", "Group", "g", "s",
-                },
-            })
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function ()
+            require("plugins.config.trouble")
         end,
+        setup = function ()
+            require('core.mappings').trouble()
+        end
+
     }
 
     use {
@@ -200,13 +216,13 @@ return packer.startup(function()
         end,
     }
 
-    use {
-        "andymass/vim-matchup",
-        opt = true,
-        setup = function()
-            require("core.utils").packer_lazy_load "vim-matchup"
-        end,
-    }
+    -- use {
+    --     "andymass/vim-matchup",
+    --     opt = true,
+    --     setup = function()
+    --         require("core.utils").packer_lazy_load "vim-matchup"
+    --     end,
+    -- }
 
     use {
         "rafamadriz/friendly-snippets",
@@ -226,13 +242,7 @@ return packer.startup(function()
         wants = "friendly-snippets",
         after = "nvim-cmp",
         config = function()
-            local luasnip = require("luasnip")
-            luasnip.config.set_config {
-                history = true,
-                updateevents = "TextChanged,TextChangedI",
-            }
-
-            require("luasnip/loaders/from_vscode").load()
+            require("plugins.config.luasnip")
         end,
     }
 
@@ -299,39 +309,6 @@ return packer.startup(function()
     }
 
     use {
-        "vinicius507/header42.nvim",
-        cmd = 'Stdheader',
-        config = function()
-            local header = require('header42')
-            header.setup {
-                user = 'psergio-',
-                mail = 'psergio-@student.42sp.org.br',
-            }
-        end,
-
-        setup = function()
-            require('core.mappings').header42()
-        end,
-    }
-
-    use {
-       "vinicius507/norme.nvim",
-       after = 'null-ls.nvim',
-       ft = { 'c' },
-       requires = {
-           'jose-elias-alvarez/null-ls.nvim',
-           opt = true,
-           ft = { 'c' },
-       },
-       config = function()
-           local null_ls = require('null-ls')
-           local norme = require('norme')
-           null_ls.setup {}
-           norme.setup {}
-       end,
-    }
-
-    use {
         "numToStr/Comment.nvim",
         module = "Comment",
         config = function()
@@ -363,4 +340,43 @@ return packer.startup(function()
             require('core.mappings').neogit()
         end,
     }
+
+    use {
+        'akinsho/toggleterm.nvim',
+        branch = "main",
+        after = 'onechad.nvim',
+        config = function()
+            require("plugins.config.toggleterm")
+        end,
+    }
+
+    use {
+        'ahmedkhalf/project.nvim',
+        after = 'telescope.nvim',
+        config = function()
+            require("project_nvim").setup {
+                manual_mode = true,
+                silent_chdir = false,
+            }
+            require("telescope").load_extension('projects')
+        end,
+        setup = function()
+            require("core.mappings").projects()
+        end,
+    }
+
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('plugins.config.gitsigns')
+        end,
+    }
+
+    use {
+        "andweeb/presence.nvim",
+        config = function ()
+            require("presence"):setup {}
+        end
+    }
+
 end)
