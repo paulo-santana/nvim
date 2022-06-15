@@ -75,29 +75,6 @@ return packer.startup(function()
     }
 
     use {
-        "lukas-reineke/indent-blankline.nvim",
-        after = "onechad.nvim",
-        config = function()
-            require("indent_blankline").setup {
-                indentLine_enabled = 1,
-                char = "▏",
-                filetype_exclude = {
-                    "help",
-                    "terminal",
-                    "dashboard",
-                    "packer",
-                    "lspinfo",
-                    "TelescopePrompt",
-                    "TelescopeResults",
-                },
-                buftype_exclude = { "terminal" },
-                show_trailing_bankline_indent = false,
-                show_first_indent_level = false,
-            }
-        end,
-    }
-
-    use {
         "norcalli/nvim-colorizer.lua",
         event = "BufRead",
         config = function()
@@ -190,6 +167,17 @@ return packer.startup(function()
             require('core.mappings').trouble()
         end
 
+    }
+
+    use {
+        'folke/todo-comments.nvim',
+        after = "trouble.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require("todo-comments").setup {
+
+            }
+        end,
     }
 
     use {
@@ -344,24 +332,10 @@ return packer.startup(function()
     use {
         'akinsho/toggleterm.nvim',
         branch = "main",
+        -- branch = "refactor/use-nvim-set-hl",
         after = 'onechad.nvim',
         config = function()
             require("plugins.config.toggleterm")
-        end,
-    }
-
-    use {
-        'ahmedkhalf/project.nvim',
-        after = 'telescope.nvim',
-        config = function()
-            require("project_nvim").setup {
-                manual_mode = true,
-                silent_chdir = false,
-            }
-            require("telescope").load_extension('projects')
-        end,
-        setup = function()
-            require("core.mappings").projects()
         end,
     }
 
@@ -379,4 +353,11 @@ return packer.startup(function()
         end
     }
 
+    use {
+        'j-hui/fidget.nvim',
+        after = 'nvim-lspconfig',
+        config = function()
+            require('fidget').setup {}
+        end,
+    }
 end)

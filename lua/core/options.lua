@@ -11,7 +11,7 @@ opt.colorcolumn = '80'
 
 opt.expandtab = true
 opt.shiftwidth = 4
-opt.tabstop = 4
+opt.tabstop = 8
 opt.smartindent = true
 
 opt.hidden = true
@@ -34,6 +34,11 @@ opt.updatetime = 250
 opt.undofile = true
 
 opt.guifont = 'JetBrainsMonoMedium Nerd Font:h10'
+
+g.neovide_refresh_rate = 144
+g.neovide_cursor_trail_length = 0.8
+g.neovide_cursor_antialiasing = true
+g.neovide_cursor_vfx_mode = "torpedo"
 
 local disabled_built_ins = {
     "2html_plugin",

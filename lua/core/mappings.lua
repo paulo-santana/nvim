@@ -13,11 +13,13 @@ end
 local M = {}
 
 M.telescope = function()
+    map('n', '<leader>tt', '<CMD>Telescope<CR>')
     map('n', '<leader>ff', '<CMD>Telescope find_files<CR>')
     map('n', '<leader>fh', '<CMD>Telescope oldfiles<CR>')
     map('n', '<leader>tc', '<CMD>Telescope colorscheme<CR>')
     map('n', '<leader>fg', '<CMD>Telescope live_grep<CR>')
-    map('n', '<leader>fb', '<CMD>Telescope marks<CR>')
+    map('n', '<leader>fb', '<CMD>Telescope buffers<CR>')
+    map('n', '<leader>fp', '<CMD>Telescope planets<CR>')
 end
 
 M.neogit = function()
@@ -27,7 +29,7 @@ end
 M.dashboard = function()
     map('n', '<leader>bm', '<CMD>DashboardJumpMarks<CR>')
     map('n', '<leader>fn', '<CMD>DashboardNewFile<CR>')
-    map('n', '<leader>db', '<CMD>Dasbhard<CR>')
+    map('n', '<leader>db', '<CMD>Dashboard<CR>')
     map('n', '<leader>sl', '<CMD>SessionLoad<CR>')
     map('n', '<leader>ss', '<CMD>SessionSave<CR>')
 end
@@ -55,7 +57,7 @@ M.lspconfig = function()
     map("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>")
     map("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>")
     map("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>")
-    -- map("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>")
+    map("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>")
     map("n", "gk", "<CMD>lua vim.lsp.buf.signature_help()<CR>")
     map("n", "<leader>D", "<CMD>lua vim.lsp.buf.type_definition()<CR>")
     map("n", "<leader>rn", "<CMD>lua vim.lsp.buf.rename()<CR>")
@@ -77,7 +79,7 @@ M.trouble = function ()
     map("n", "<leader>xq", "<CMD>TroubleToggle quickfix<CR>")
     -- map("n", "gd", "<CMD>TroubleToggle lsp_definitions<CR>")
     map("n", "gr", "<CMD>TroubleToggle lsp_references<CR>")
-    map("n", "gi", "<CMD>TroubleToggle lsp_implementations<CR>")
+    -- map("n", "gi", "<CMD>TroubleToggle lsp_implementations<CR>")
 end
 
 Make = nil
