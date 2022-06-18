@@ -11,7 +11,7 @@ opt.colorcolumn = '80'
 
 opt.expandtab = true
 opt.shiftwidth = 4
-opt.tabstop = 8
+opt.tabstop = 4
 opt.smartindent = true
 
 opt.hidden = true
