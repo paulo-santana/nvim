@@ -1,2 +1,6 @@
 vim.cmd [[ au BufEnter *.tpp setlocal filetype=cpp ]]
 vim.cmd [[ au BufEnter *.c setlocal tabstop=8 ]]
+vim.cmd [[ au BufEnter *.cpp setlocal tabstop=2 ]]
+vim.cmd [[ au BufEnter *.cpp setlocal shiftwidth=2 ]]
+vim.cmd [[ au BufEnter *.hpp setlocal tabstop=2 ]]
+vim.cmd [[ au BufEnter *.hpp setlocal shiftwidth=2 ]]

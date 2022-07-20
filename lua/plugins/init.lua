@@ -178,6 +178,9 @@ return packer.startup(function()
 
             }
         end,
+        setup = function ()
+            require("core.mappings").todo_comments()
+        end
     }
 
     use {
@@ -187,19 +190,19 @@ return packer.startup(function()
             local lspsignature = require("lsp_signature")
             lspsignature.setup {
                 bind = true,
-                doc_lines = 0,
                 floating_window = true,
                 fix_pos = true,
                 hint_enable = true,
                 hint_scheme = "String",
+                hint_prefix = "🐼 ",
                 hi_parameter = "Search",
                 max_height = 22,
                 max_width = 120,
                 handler_opts = {
-                    boerder = "single",
+                    boerder = "rounded",
                 },
-                zindex = 200,
-                padding = ""
+                padding = " ",
+                toggle_key = '<M-x>'
             }
         end,
     }
@@ -277,6 +280,7 @@ return packer.startup(function()
 
     use {
         "glepnir/dashboard-nvim",
+        event = "VimEnter",
         config = function()
             require('plugins.config.dashboard')
         end,
@@ -309,6 +313,7 @@ return packer.startup(function()
         end,
     }
 
+    -- BUG: makes :wqa throw an error after opening it
     use {
         'TimUntersberger/neogit',
         cdm = 'Neogit',

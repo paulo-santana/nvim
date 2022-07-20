@@ -20,6 +20,7 @@ M.telescope = function()
     map('n', '<leader>fg', '<CMD>Telescope live_grep<CR>')
     map('n', '<leader>fb', '<CMD>Telescope buffers<CR>')
     map('n', '<leader>fp', '<CMD>Telescope planets<CR>')
+    map('n', '<leader>fd', '<CMD>Telescope find_files<CR>') -- TODO: browse dotfiles
 end
 
 M.neogit = function()
@@ -80,6 +81,10 @@ M.trouble = function ()
     -- map("n", "gd", "<CMD>TroubleToggle lsp_definitions<CR>")
     map("n", "gr", "<CMD>TroubleToggle lsp_references<CR>")
     -- map("n", "gi", "<CMD>TroubleToggle lsp_implementations<CR>")
+end
+
+M.todo_comments = function()
+    map("n", "<leader>td", "<CMD>TodoTrouble<CR>")
 end
 
 Make = nil
