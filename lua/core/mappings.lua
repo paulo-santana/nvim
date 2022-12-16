@@ -46,7 +46,7 @@ M.bufferline = function()
 end
 
 M.comment = function()
-    map("n", "<leader>'", '<CMD>lua require("Comment.api").toggle_current_linewise()<CR>')
+    map("n", "<leader>'", '<CMD>lua require("Comment.api").toggle.linewise.current()<CR>')
     map("x", "<leader>'", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
 end
 
@@ -122,8 +122,15 @@ end
 
 local function _custom_mappings()
     -- map("n", "<F5>", "<CMD>vsplit term://make run<CR>i")
+    map("n", "<F4>", "<CMD>make<CR>")
     map("n", "<F5>", "<CMD>lua MakeRun()<CR>")
     map("n", "<leader>nh", "<CMD>noh<CR>")
+
+    -- map("n", "<F6>",  ":lua require'dap'.continue()<CR>")
+    -- map("n", "<F9>",  ":lua require'dap'.toggle_breakpoint()<CR>")
+    -- map("n", "<F2>", ":lua require'dap'.step_over()<CR>")
+    -- map("n", "<F3>", ":lua require'dap'.step_into()<CR>")
+    -- map("n", "<F4>", ":lua require'dap'.step_out()<CR>")
 end
 
 M.misc = function()

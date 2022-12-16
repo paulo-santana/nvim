@@ -10,6 +10,7 @@ local config = require("plugins.config.lspconfig")
 local servers = {
     "clangd",
     "tsserver",
+    "svelte",
     "rust_analyzer",
 }
 
@@ -24,7 +25,7 @@ end
 for _, server in ipairs(servers) do
     if server == "clangd" then
         local clangd_capabilities = table.table_copy(config.capabilities)
-        clangd_capabilities.offsetEncoding = { "utf-16" }
+        -- clangd_capabilities.offsetEncoding = { "utf-16" }
         lspconfig["clangd"].setup {
             capabilities = clangd_capabilities,
             on_attach = config.on_attach,
@@ -62,3 +63,10 @@ lspconfig["sumneko_lua"].setup {
         },
     },
 }
+
+local css_capabilities = vim.lsp.protocol.make_client_capabilities()
+css_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.cssls.setup({
+    capabilities = css_capabilities,
+})

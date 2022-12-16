@@ -12,12 +12,10 @@ return packer.startup(function()
 
     use {
         "wbthomason/packer.nvim",
-        event = "VimEnter",
     }
 
     use {
         "~/docs/projects/onechad.nvim",
-        after = "packer.nvim",
         config = function()
             vim.cmd "colorscheme onechad"
         end,
@@ -65,7 +63,8 @@ return packer.startup(function()
     use {
         "akinsho/bufferline.nvim",
         branch = "main",
-        after = "nvim-web-devicons",
+
+        after = "onechad.nvim",
         config = function()
             require("plugins.config.bufferline")
         end,
@@ -75,36 +74,36 @@ return packer.startup(function()
     }
 
     use {
-        "norcalli/nvim-colorizer.lua",
-        event = "BufRead",
+        'NvChad/nvim-colorizer.lua',
         config = function()
-            local ok, colorizer = pcall(require, "colorizer")
-            if ok then
-                colorizer.setup({ "*" }, {
-                    RGB = true, -- #RGB hex codes
-                    RRGGBB = true, -- #RRGGBB hex codes
-                    names = false, -- "Name" codes like Blue
-                    RRGGBBAA = true, -- #RRGGBBAA hex codes
-                    rgb_fn = false, -- CSS rgb() and rgba() functions
-                    hsl_fn = false, -- CSS hsl() and hsla() functions
-                    css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-                    css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-
-                    -- Available modes: foreground, background
-                    mode = "background", -- Set the display mode.
-                })
-                vim.cmd "ColorizerReloadAllBuffers"
-            end
+            require('colorizer').setup()
+            -- local ok, colorizer = pcall(require, "colorizer")
+            -- if ok then
+            --     colorizer.setup({ "*" }, {
+            --         RGB = true, -- #RGB hex codes
+            --         RRGGBB = true, -- #RRGGBB hex codes
+            --         names = false, -- "Name" codes like Blue
+            --         RRGGBBAA = true, -- #RRGGBBAA hex codes
+            --         rgb_fn = false, -- CSS rgb() and rgba() functions
+            --         hsl_fn = false, -- CSS hsl() and hsla() functions
+            --         css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+            --         css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+            --
+            --         -- Available modes: foreground, background
+            --         mode = "background", -- Set the display mode.
+            --     })
+            --     vim.cmd "ColorizerReloadAllBuffers"
+            -- end
         end,
     }
 
     use {
         "nvim-treesitter/nvim-treesitter",
-        event = "BufRead",
         config = function()
             local ok, ts_config = pcall(require, "nvim-treesitter.configs")
 
             if not ok then
+                print('Error importing Treesitter')
                 return
             end
 
@@ -112,6 +111,27 @@ return packer.startup(function()
                 ensure_installed = {
                     "lua",
                     "vim",
+                },
+                indent = {
+                    enable = true,
+                },
+                playground = {
+                    enable = true,
+                    disable = {},
+                    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+                    persist_queries = false, -- Whether the query persists across vim sessions
+                    keybindings = {
+                        toggle_query_editor = 'o',
+                        toggle_hl_groups = 'i',
+                        toggle_injected_languages = 't',
+                        toggle_anonymous_nodes = 'a',
+                        toggle_language_display = 'I',
+                        focus_language = 'f',
+                        unfocus_language = 'F',
+                        update = 'R',
+                        goto_node = '<cr>',
+                        show_help = '?',
+                    },
                 },
                 highlight = {
                     enable = true,
@@ -122,16 +142,94 @@ return packer.startup(function()
     }
 
     use {
-        "neovim/nvim-lspconfig",
-        opt = true,
-        setup = function()
-            require("core.utils").packer_lazy_load "nvim-lspconfig"
-            vim.defer_fn(function()
-                vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-                require("plugins.config.lspconfig_setup")
-            end, 0)
+        'nvim-treesitter/playground',
+        requires = {
+            'nvim-treesitter/nvim-treesitter'
+        }
+    }
+
+    use {
+        "windwp/nvim-ts-autotag",
+        config = function ()
+            require('nvim-ts-autotag').setup()
         end
     }
+
+    use {
+        "neovim/nvim-lspconfig",
+        config = function()
+            -- require("core.utils").packer_lazy_load "nvim-lspconfig"
+            -- vim.defer_fn(function()
+            --     vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+            --     require("plugins.config.lspconfig_setup")
+            -- end, 0)
+            require("plugins.config.lspconfig_setup")
+        end
+    }
+
+    -- use{
+    --     "jose-elias-alvarez/null-ls.nvim",
+    --     -- after = "nvim-lspconfig",
+    --     config = function()
+    --         local nullls = require("null-ls")
+    --
+    --         nullls.setup({
+    --             sources = {
+    --                 nullls.builtins.formatting.prettierd
+    --             },
+    --             on_attach = function(client, buffnr)
+    --                 if client.server_capabilities.documentFormattingProvider then
+    --                     print("This is unacceptable")
+    --                     vim.cmd("nnoremap <silent><buffer> <leader>p :lua vim.lsp.buf.formatting()<CR>")
+    --
+    --                     -- format on save
+    --                     vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
+    --                 end
+    --
+    --                 if client.server_capabilities.documentRangeFormattingProvider then
+    --                     vim.cmd("xnoremap <silent><buffer> <leader>p :lua vim.lsp.buf.range_formatting({})<CR>")
+    --                 end
+    --                 print("Inside on_attach")
+    --             end,
+    --         })
+    --     end,
+    -- }
+
+    use {
+        "sbdchd/neoformat",
+        config = function()
+            vim.cmd[[autocmd BufWritePre *.js Neoformat]]
+            vim.cmd[[autocmd BufWritePre *.ts Neoformat]]
+            vim.cmd[[autocmd BufWritePre *.jsx Neoformat]]
+            vim.cmd[[autocmd BufWritePre *.tsx Neoformat]]
+            vim.cmd[[autocmd BufWritePre *.svelte Neoformat]]
+        end
+    }
+
+    --use {
+    --    "MunifTanjim/prettier.nvim",
+    --    after = "null-ls.nvim",
+    --    config = function ()
+    --        local prettier = require("prettier")
+
+    --        prettier.setup({
+    --            bin = 'prettierd',
+    --            filetypes = {
+    --                "css",
+    --                "graphql",
+    --                "html",
+    --                "javascript",
+    --                "javascriptreact",
+    --                "json",
+    --                "less",
+    --                "markdown",
+    --                "scss",
+    --                "typescript",
+    --                "typescriptreact",
+    --            }
+    --        })
+    --    end
+    --}
 
     -- use {
     --     "tjdevries/nlua.nvim",
@@ -174,9 +272,7 @@ return packer.startup(function()
         after = "trouble.nvim",
         requires = "nvim-lua/plenary.nvim",
         config = function()
-            require("todo-comments").setup {
-
-            }
+            require("todo-comments").setup { }
         end,
         setup = function ()
             require("core.mappings").todo_comments()
@@ -217,7 +313,7 @@ return packer.startup(function()
 
     use {
         "rafamadriz/friendly-snippets",
-        event = "InsertEnter",
+        -- event = "InsertEnter",
     }
 
     use {
@@ -365,4 +461,32 @@ return packer.startup(function()
             require('fidget').setup {}
         end,
     }
+
+    -- use {
+    --     'mfussenegger/nvim-dap',
+    --     config = function ()
+    --         require('plugins.config.dap')
+    --     end,
+    -- }
+    --
+    -- use {
+    --     "rcarriga/nvim-dap-ui",
+    --     requires = {
+    --         "mfussenegger/nvim-dap"
+    --     },
+    --     config = function ()
+    --         require('plugins.config.dap-ui')
+    --     end
+    -- }
+    --
+    -- use {
+    --     'theHamsta/nvim-dap-virtual-text',
+    --     requires = {
+    --         "mfussenegger/nvim-dap"
+    --     },
+    --     config = function ()
+    --         require('nvim-dap-virtual-text').setup()
+    --     end
+    -- }
+
 end)
